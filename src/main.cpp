@@ -18,7 +18,7 @@
 #endif
 
 #define I2C_PORT 0
-#define I2C_ADDRESS 0x20
+#define I2C_ADDRESS 0x11
 
 #ifdef CONFIG_IDF_TARGET_ESP32S2
 #define PIN_I2C_SDA 33
@@ -426,7 +426,7 @@ void loop()
   if (time > s_time_statistick_us + 5000000)
   {
 	  double hash_rate = (double)s_hashes_statistick * 1000000.0 / double(time - s_time_statistick_us);
-    Serial.printf("HashRate %.2fKH/s\n", hash_rate);
+    Serial.printf("HashRate %.2fKH/s\n", hash_rate / 1000.0);
     s_hashes_statistick = 0;
     s_time_statistick_us = time;
   }
